@@ -84,13 +84,6 @@
 						<property name="ItemHeight" vt="Int8">13</property>
 						<property name="TabOrder" vt="Int8">2</property>
 						<property name="Text" vt="String">Select Internet Connection</property>
-						<property name="Items.Strings" vt="List">
-							<list>
-								<li vt="String">1</li>
-								<li vt="String">2</li>
-								<li vt="String">3</li>
-							</list>
-						</property>
 						<property name="CtrlStyle" vt="Int32">1342374466</property>
 						<property name="CtrlExStyle" vt="Int8">0</property>
 						<property name="Resizing" vt="Set">DockHeight</property>

@@ -56,8 +56,9 @@ While 1
 			Exit
 
 	  Case $Button_runApp
-		 If GUICtrlRead(GUICtrlRead($Input_appAddress) <> "" Then
-			Run("cmd /c ForceBindIP64 -i " & GUICtrlRead($Combo_internetSelect) & " " & GUICtrlRead($Input_appAddress) ,"",@SW_HIDE)
+		 If GUICtrlRead($Input_appAddress) <> "" Then
+;~ 			Run("cmd /c ForceBindIP64 -i " & GUICtrlRead($Combo_internetSelect) & " " & GUICtrlRead($Input_appAddress) ,"",@SW_HIDE)
+			runCMD(GUICtrlRead($Input_appAddress))
 		 Else
 			MsgBox(0,"Input Can Not Be Empty","Please Enter Valid Data...")
 		 EndIf
