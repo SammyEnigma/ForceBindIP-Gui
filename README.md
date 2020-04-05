@@ -2,9 +2,14 @@
 A GUI For ForceBindIP
 
 A Simple Application Written With AutoIt Programming language   
-![alt text](https://github.com/mhasanjb/ForceBindIP-Gui/blob/master/Preview2.png  "(Preview)ForceBindIP - By M.Hasan Jabbari")
+![alt text](https://github.com/mhasanjb/ForceBindIP-Gui/blob/master/Preview3.png  "(Preview)ForceBindIP - By M.Hasan Jabbari")
 
+## Automatic 
+1. Run ForceBindIP-Gui.exe ( or compile it then open if u want )
+2. Click On "Download and Config"
+3. Enjoy 
 
+## Manuel
 1. Download ForceBindIP ( https://r1ch.net/projects/forcebindip )    
 2. Copy ForceBindIP To C:\Windows\system32 (for x86)    
 3. Copy ForceBindIP To C:\Windows\sysWOW64 (for x64)    
