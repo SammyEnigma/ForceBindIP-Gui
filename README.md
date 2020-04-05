@@ -20,6 +20,6 @@ Firefox requires the about:config?filter=browser.launcherProcess.enabled prefere
 
 ## Copying ForceBindIP
 If you install ForceBindIP it might be in     
-C:\Program Files (x86)\ForceBindIP
+C:\Program Files (x86)\ForceBindIP    
 or    
 C:\Program Files\ForceBindIP   
