@@ -33,6 +33,14 @@ $Output=""
 $objWMIService = ObjGet("winmgmts:\\" & $strComputer & "\root\CIMV2")
 $colItems = $objWMIService.ExecQuery("SELECT * FROM Win32_NetworkAdapter WHERE NetConnectionID != NULL", "WQL", $wbemFlagReturnImmediately + $wbemFlagForwardOnly)
 
+; Vars
+$googleChrome = "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
+$firefox = "C:\Program Files\Mozilla Firefox\firefox.exe"
+$iexplorer = "C:\Program Files\Internet Explorer\iexplore.exe"
+$spotify = "C:\Users\" & @UserName & "\AppData\Roaming\Spotify\Spotify.exe"
+$idm = "C:\Program Files (x86)\Internet Download Manager\IDMan.exe"
+$steam = "C:\Program Files (x86)\Steam\steam.exe"
+$dota2 = "C:\Program Files (x86)\Steam\steamapps\common\dota 2 beta\game\bin\win64\dota2.exe"
 
 GetInternet()
 
@@ -53,25 +61,25 @@ While 1
 		 EndIf
 
 	  Case $Button_googleChrome
-		 Run("cmd /c ForceBindIP64 -i " & GUICtrlRead($Combo_internetSelect) & ' "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"',"" , @SW_HIDE)
+		 runCMD($googleChrome)
 
 	  Case $Button_fireFox
-		 Run("cmd /c ForceBindIP64 -i " & GUICtrlRead($Combo_internetSelect) & ' "C:\Program Files\Mozilla Firefox\firefox.exe"',"",@SW_HIDE)
+		 runCMD($firefox)
 
 	  Case $Button_internetExplorer
-		 Run("cmd /c ForceBindIP64 -i " & GUICtrlRead($Combo_internetSelect) & ' "C:\Program Files\Internet Explorer\iexplore.exe"',"",@SW_HIDE)
+		 runCMD($iexplorer)
 
 	  Case $Button_spotify
-		 Run("cmd /c ForceBindIP64 -i " & GUICtrlRead($Combo_internetSelect) & ' "C:\Users\Hasan\AppData\Roaming\Spotify\Spotify.exe"',"",@SW_HIDE)
+		 runCMD($spotify)
 
 	  Case $Button_idm
-		 Run("cmd /c ForceBindIP64 -i " & GUICtrlRead($Combo_internetSelect) & ' "C:\Program Files (x86)\Internet Download Manager\IDMan.exe"',"",@SW_HIDE)
+		 runCMD($idm)
 
 	  Case $Button_steam
-		 Run("cmd /c ForceBindIP64 -i " & GUICtrlRead($Combo_internetSelect) & ' "C:\Program Files (x86)\Steam\steam.exe"',"" , @SW_HIDE)
+		 runCMD($steam)
 
 	  Case $Button_dota
-		 Run("cmd /c ForceBindIP64 -i " & GUICtrlRead($Combo_internetSelect) & ' "C:\Program Files (x86)\Steam\steamapps\common\dota 2 beta\game\bin\win64\dota2.exe"',"",@SW_HIDE)
+		 runCMD($dota2)
 
 	EndSwitch
  WEnd
@@ -89,4 +97,10 @@ Func GetInternet ()
    Else
 	  Msgbox(0,"WMI Output","No WMI Objects Found for class: " & "Win32_NetworkAdapter" )
    Endif
- EndFunc
+
+EndFunc
+
+
+Func runCMD($address)
+   Run("cmd /c ForceBindIP64 -i " & GUICtrlRead($Combo_internetSelect) & ' ' & $address,"" , @SW_HIDE)
+EndFunc
