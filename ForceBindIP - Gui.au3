@@ -4,12 +4,14 @@
 #include <GUIConstantsEx.au3>
 #include <StaticConstants.au3>
 #include <WindowsConstants.au3>
-#Region ### START Koda GUI section ### Form=C:\- App -\Autoit\ForceBindIP\LAN\LAN.kxf
-$Form1_1 = GUICreate("ForceBindIP - By M.Hasan Jabbari", 626, 309, 188, 122)
-$Group_appAddress = GUICtrlCreateGroup("Application Address", 16, 16, 593, 137)
-$Button_runApp = GUICtrlCreateButton("Run Application", 240, 112, 123, 25)
+#Region ### START Koda GUI section ### Form=C:\- App -\Autoit\ForceBindIP\LAN\ForceBindIP - Gui.kxf
+$Form1_1 = GUICreate("ForceBindIP - By M.Hasan Jabbari", 626, 309, 604, 237)
+$Group_appAddress = GUICtrlCreateGroup("Application Address", 16, 16, 593, 153)
+$Button_runApp = GUICtrlCreateButton("Run Application", 240, 120, 123, 25)
 $Input_appAddress = GUICtrlCreateInput("Application Address", 32, 72, 553, 21)
 $Combo_internetSelect = GUICtrlCreateCombo("Select Internet Connection", 32, 40, 553, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
+$Radio_x86 = GUICtrlCreateRadio("x86", 440, 112, 113, 17)
+$Radio_x64 = GUICtrlCreateRadio("x64", 440, 136, 113, 17)
 GUICtrlCreateGroup("", -99, -99, 1, 1)
 $Group_Quick = GUICtrlCreateGroup("Quick Access", 16, 176, 593, 105)
 $Button_googleChrome = GUICtrlCreateButton("Google Chrome", 24, 200, 91, 25)
@@ -102,5 +104,11 @@ EndFunc
 
 
 Func runCMD($address)
-   Run("cmd /c ForceBindIP64 -i " & GUICtrlRead($Combo_internetSelect) & ' ' & $address,"" , @SW_HIDE)
+   If (GUICtrlRead($Radio_x86) = 1) Then
+	  Run("cmd /c ForceBindIP -i " & GUICtrlRead($Combo_internetSelect) & ' ' & $address,"" , @SW_HIDE)
+   ElseIf (GUICtrlRead($Radio_x64) = 1) Then
+	  Run("cmd /c ForceBindIP64 -i " & GUICtrlRead($Combo_internetSelect) & ' ' & $address,"" , @SW_HIDE)
+   Else
+	  MsgBox(1,"Select One Option", "Please Select One Option")
+   EndIf
 EndFunc

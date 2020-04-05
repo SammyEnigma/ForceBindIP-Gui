@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <object type="TAForm" name="Form1_1">
 	<properties>
-		<property name="Left" vt="Int16">188</property>
-		<property name="Top" vt="Int8">122</property>
+		<property name="Left" vt="Int16">604</property>
+		<property name="Top" vt="Int16">237</property>
 		<property name="Width" vt="Int16">641</property>
 		<property name="Height" vt="Int16">347</property>
 		<property name="Caption" vt="String">ForceBindIP - By M.Hasan Jabbari</property>
@@ -36,7 +36,7 @@
 				<property name="Left" vt="Int8">16</property>
 				<property name="Top" vt="Int8">16</property>
 				<property name="Width" vt="Int16">593</property>
-				<property name="Height" vt="Int16">137</property>
+				<property name="Height" vt="Int16">153</property>
 				<property name="CtrlStyle" vt="Int32">1342308359</property>
 				<property name="CtrlExStyle" vt="Int8">0</property>
 				<property name="Caption" vt="String">Application Address</property>
@@ -63,7 +63,7 @@
 				<object type="TAButton" name="Button_runApp">
 					<properties>
 						<property name="Left" vt="Int16">224</property>
-						<property name="Top" vt="Int8">96</property>
+						<property name="Top" vt="Int8">104</property>
 						<property name="Width" vt="Int8">123</property>
 						<property name="Height" vt="Int8">25</property>
 						<property name="Caption" vt="String">Run Application</property>
@@ -92,6 +92,34 @@
 							</list>
 						</property>
 						<property name="CtrlStyle" vt="Int32">1342374466</property>
+						<property name="CtrlExStyle" vt="Int8">0</property>
+						<property name="Resizing" vt="Set">DockHeight</property>
+					</properties>
+					<components/>
+				</object>
+				<object type="TARadio" name="Radio_x86">
+					<properties>
+						<property name="Left" vt="Int16">424</property>
+						<property name="Top" vt="Int8">96</property>
+						<property name="Width" vt="Int8">113</property>
+						<property name="Height" vt="Int8">17</property>
+						<property name="Caption" vt="String">x86</property>
+						<property name="TabOrder" vt="Int8">3</property>
+						<property name="CtrlStyle" vt="Int32">1342242825</property>
+						<property name="CtrlExStyle" vt="Int8">0</property>
+						<property name="Resizing" vt="Set">DockHeight</property>
+					</properties>
+					<components/>
+				</object>
+				<object type="TARadio" name="Radio_x64">
+					<properties>
+						<property name="Left" vt="Int16">424</property>
+						<property name="Top" vt="Int8">120</property>
+						<property name="Width" vt="Int8">113</property>
+						<property name="Height" vt="Int8">17</property>
+						<property name="Caption" vt="String">x64</property>
+						<property name="TabOrder" vt="Int8">4</property>
+						<property name="CtrlStyle" vt="Int32">1342242825</property>
 						<property name="CtrlExStyle" vt="Int8">0</property>
 						<property name="Resizing" vt="Set">DockHeight</property>
 					</properties>
