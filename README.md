@@ -2,6 +2,8 @@
 A GUI For ForceBindIP
 
 A Simple Application Written With AutoIt Programming language    
+[logo]: https://github.com/mhasanjb/ForceBindIP-Gui/blob/master/Preview.png "(Preview)ForceBindIP - By M.Hasan Jabbari"
+
 
 1. Download ForceBindIP ( https://r1ch.net/projects/forcebindip )    
 2. Run ForceBindIP-Gui.exe ( or compile it then open if u want )    
