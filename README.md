@@ -5,7 +5,7 @@ A Simple Application Written With AutoIt Programming language
 ![alt text](https://github.com/mhasanjb/ForceBindIP-Gui/blob/master/Preview3.png  "(Preview)ForceBindIP - By M.Hasan Jabbari")
 
 ## Automatic 
-1. Run ForceBindIP-Gui.exe ( or compile it then open if u want )
+1. Run ForceBindIP-Gui.exe ( or compile .au3 it then open if u want )    
 2. Click On "Download and Config"
 3. Enjoy 
 
@@ -13,7 +13,7 @@ A Simple Application Written With AutoIt Programming language
 1. Download ForceBindIP ( https://r1ch.net/projects/forcebindip )    
 2. Copy ForceBindIP To C:\Windows\system32 (for x86)    
 3. Copy ForceBindIP To C:\Windows\sysWOW64 (for x64)    
-4. Run ForceBindIP-Gui.exe ( or compile it then open if u want )    
+4. Run ForceBindIP-Gui.exe ( or compile .au3 it then open if u want )      
 5. Enjoy :)
 
 ## Google Chrome Compatibility
@@ -22,6 +22,10 @@ Chrome requires additional configuration to run under ForceBindIP. This is becau
 
 ## Firefox Compatibility
 Firefox requires the about:config?filter=browser.launcherProcess.enabled preference set to false, otherwise ForceBindIP attaches to the launcher and not the actual program.
+
+## Downloading ForceBindIP
+If you can not download ForceBindIP by clicking on "Download and Config"     
+Then Open "ForceBindIP-Download.exe" ( or compile .au3 it then open if u want )    
 
 ## Copying ForceBindIP
 If you install ForceBindIP it might be in     
