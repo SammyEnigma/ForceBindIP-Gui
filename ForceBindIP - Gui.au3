@@ -13,9 +13,8 @@ Opt("TrayMenuMode",1)
 #include <MsgBoxConstants.au3>
 #include <WinAPIFiles.au3>
 
-
 #Region ### START Koda GUI section ### Form=C:\- App -\Autoit\ForceBindIP\LAN\ForceBindIP - Gui.kxf
-$Form1_1 = GUICreate("ForceBindIP - By M.Hasan Jabbari", 626, 384, 604, 237)
+$Form1_1 = GUICreate("ForceBindIP - By M.Hasan Jabbari", 626, 393, 604, 237)
 $Group_appAddress = GUICtrlCreateGroup("Application Address", 16, 16, 593, 153)
 $Button_runApp = GUICtrlCreateButton("Run Application", 240, 120, 123, 25)
 $Input_appAddress = GUICtrlCreateInput("Application Address", 32, 72, 553, 21)
@@ -34,6 +33,7 @@ $Button_dota = GUICtrlCreateButton("Dota 2", 352, 240, 91, 25)
 $Button_downloadConfig = GUICtrlCreateButton("Download and Config ForceBindIP", 216, 304, 203, 25)
 GUICtrlCreateGroup("", -99, -99, 1, 1)
 $Label_copyRight = GUICtrlCreateLabel("M.Hasan Jabbari", 528, 360, 84, 17)
+$Label_Internet = GUICtrlCreateLabel("Select Internet Connection", 16, 360, 482, 17)
 GUISetState(@SW_SHOW)
 #EndRegion ### END Koda GUI section ###
 
@@ -100,8 +100,18 @@ While 1
 	  Case $Button_downloadConfig
 		 DownloadConfig()
 
+	  Case $Combo_internetSelect
+		 $ComboString = GUICtrlRead($Combo_internetSelect)
+		 $iPosition = StringInStr($ComboString, "{")
+		 $iPosition = $iPosition - 1
+		 $sString = StringTrimLeft($ComboString,$iPosition)
+		 GUICtrlSetData($Label_Internet,$sString)
+
 	EndSwitch
  WEnd
+
+
+
 
 
 Func GetInternet ()
@@ -109,8 +119,7 @@ Func GetInternet ()
    If IsObj($colItems) then
 	  For $objItem In $colItems
 		 If $objItem.NetEnabled = True Then
-			GUICtrlSetData($Combo_internetSelect , $objItem.GUID)
-			MsgBox(0,"Founded", $objItem.NetConnectionID & " ( " & $objItem.ProductName & " )")
+			GUICtrlSetData($Combo_internetSelect , "(" & $objItem.NetConnectionID & ") " & $objItem.Name & " --- " & $objItem.GUID)
 		 EndIf
 	  Next
    Else
@@ -122,9 +131,9 @@ EndFunc
 
 Func runCMD($address)
    If (GUICtrlRead($Radio_x86) = 1) Then
-	  Run("cmd /c ForceBindIP -i " & GUICtrlRead($Combo_internetSelect) & ' ' & $address,"" , @SW_HIDE)
+	  Run("cmd /c ForceBindIP -i " & GUICtrlRead($Label_Internet) & ' ' & $address,"" , @SW_HIDE)
    ElseIf (GUICtrlRead($Radio_x64) = 1) Then
-	  Run("cmd /c ForceBindIP64 -i " & GUICtrlRead($Combo_internetSelect) & ' ' & $address,"" , @SW_HIDE)
+	  Run("cmd /c ForceBindIP64 -i " & GUICtrlRead($Label_Internet) & ' ' & $address,"" , @SW_HIDE)
    Else
 	  MsgBox(1,"Select One Option", "Please Select One Option")
    EndIf

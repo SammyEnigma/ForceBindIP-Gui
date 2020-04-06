@@ -4,7 +4,7 @@
 		<property name="Left" vt="Int16">604</property>
 		<property name="Top" vt="Int16">237</property>
 		<property name="Width" vt="Int16">641</property>
-		<property name="Height" vt="Int16">422</property>
+		<property name="Height" vt="Int16">431</property>
 		<property name="Caption" vt="String">ForceBindIP - By M.Hasan Jabbari</property>
 		<property name="Color" vt="Ident">clBtnFace</property>
 		<property name="Font.Charset" vt="Ident">DEFAULT_CHARSET</property>
@@ -263,6 +263,21 @@
 				<property name="Height" vt="Int8">17</property>
 				<property name="Caption" vt="String">M.Hasan Jabbari</property>
 				<property name="TabOrder" vt="Int8">2</property>
+				<property name="HaveVariable" vt="False">False</property>
+				<property name="CtrlStyle" vt="Int32">1342308608</property>
+				<property name="CtrlExStyle" vt="Int8">0</property>
+				<property name="Resizing" vt="Set"/>
+			</properties>
+			<components/>
+		</object>
+		<object type="TALabel" name="Label_Internet">
+			<properties>
+				<property name="Left" vt="Int8">16</property>
+				<property name="Top" vt="Int16">360</property>
+				<property name="Width" vt="Int16">482</property>
+				<property name="Height" vt="Int8">17</property>
+				<property name="Caption" vt="String">Select Internet Connection</property>
+				<property name="TabOrder" vt="Int8">3</property>
 				<property name="HaveVariable" vt="False">False</property>
 				<property name="CtrlStyle" vt="Int32">1342308608</property>
 				<property name="CtrlExStyle" vt="Int8">0</property>
