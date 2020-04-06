@@ -13,8 +13,8 @@ Opt("TrayMenuMode",1)
 #include <MsgBoxConstants.au3>
 #include <WinAPIFiles.au3>
 
-#Region ### START Koda GUI section ### Form=C:\- App -\Autoit\ForceBindIP\LAN\ForceBindIP - Gui.kxf
-$Form1_1 = GUICreate("ForceBindIP - By M.Hasan Jabbari", 626, 393, 604, 237)
+#Region ### START Koda GUI section ### Form=C:\- App -\Autoit\ForceBindIP\0.0.0.0\GUI\ForceBindIP - Gui.kxf
+$Form1_1 = GUICreate("ForceBindIP - By M.Hasan Jabbari", 626, 393, -1, -1)
 $Group_appAddress = GUICtrlCreateGroup("Application Address", 16, 16, 593, 153)
 $Button_runApp = GUICtrlCreateButton("Run Application", 240, 120, 123, 25)
 $Input_appAddress = GUICtrlCreateInput("Application Address", 32, 72, 553, 21)
@@ -33,7 +33,7 @@ $Button_dota = GUICtrlCreateButton("Dota 2", 352, 240, 91, 25)
 $Button_downloadConfig = GUICtrlCreateButton("Download and Config ForceBindIP", 216, 304, 203, 25)
 GUICtrlCreateGroup("", -99, -99, 1, 1)
 $Label_copyRight = GUICtrlCreateLabel("M.Hasan Jabbari", 528, 360, 84, 17)
-$Label_Internet = GUICtrlCreateLabel("Select Internet Connection", 16, 360, 482, 17)
+$Label_Internet = GUICtrlCreateLabel("Select Internet Connection", 16, 360, 130, 17)
 GUISetState(@SW_SHOW)
 #EndRegion ### END Koda GUI section ###
 
@@ -57,6 +57,9 @@ $steam = "C:\Program Files (x86)\Steam\steam.exe"
 $dota2 = "C:\Program Files (x86)\Steam\steamapps\common\dota 2 beta\game\bin\win64\dota2.exe"
 $system32 = "C:\windows\system32"
 $sysWOW64 = "C:\windows\sysWOW64"
+
+$sZipFile = @ScriptDir & "\ForceBindIP.zip"
+$sDestFolder = @ScriptDir & "\ForceBindIP"
 
 GetInternet()
 
@@ -149,8 +152,6 @@ Func DownloadConfig()
 	  InetGet ( "https://r1ch.net/assets/forcebindip/ForceBindIP-1.32.zip", "ForceBindIP.zip" )
 
 	  ; Unzip
-	  Const $sZipFile = @ScriptDir & "\ForceBindIP.zip"
-	  Const $sDestFolder = @ScriptDir & "\ForceBindIP"
 	  UnZip($sZipFile, $sDestFolder)
 	  If @error Then Exit MsgBox ($MB_SYSTEMMODAL,"","Error unzipping file : " & @error)
 
@@ -169,8 +170,6 @@ Func DownloadConfig()
 	  InetGet ( "https://r1ch.net/assets/forcebindip/ForceBindIP-1.32.zip", "ForceBindIP.zip" )
 
 	  ; Unzip
-	  Const $sZipFile = @ScriptDir & "\ForceBindIP.zip"
-	  Const $sDestFolder = @ScriptDir & "\ForceBindIP"
 	  UnZip($sZipFile, $sDestFolder)
 	  If @error Then Exit MsgBox ($MB_SYSTEMMODAL,"","Error unzipping file : " & @error)
 
