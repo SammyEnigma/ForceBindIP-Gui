@@ -23,6 +23,10 @@ Chrome requires additional configuration to run under ForceBindIP. This is becau
 ## Firefox Compatibility
 Firefox requires the about:config?filter=browser.launcherProcess.enabled preference set to false, otherwise ForceBindIP attaches to the launcher and not the actual program.
 
+## Run Applications As x86 or x64
+Some applications needs to run as x86 / x64    
+So if you have a problem , try both of them ( ofc u need x64 windows to use x64 )
+
 ## Downloading ForceBindIP
 If you can not download ForceBindIP by clicking on "Download and Config"     
 Then Open "ForceBindIP-Download.exe" ( or compile .au3 it then open if u want )    
