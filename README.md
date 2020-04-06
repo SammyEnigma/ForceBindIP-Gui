@@ -2,7 +2,7 @@
 A GUI For ForceBindIP
 
 A Simple Application Written With AutoIt Programming language   
-![alt text](https://github.com/mhasanjb/ForceBindIP-Gui/blob/master/Preview3.png  "(Preview)ForceBindIP - By M.Hasan Jabbari")
+![alt text](https://github.com/mhasanjb/ForceBindIP-Gui/blob/master/Preview4.png  "(Preview)ForceBindIP - By M.Hasan Jabbari")
 
 ## Automatic 
 1. Run ForceBindIP-Gui.exe ( or compile .au3 it then open if u want )    
