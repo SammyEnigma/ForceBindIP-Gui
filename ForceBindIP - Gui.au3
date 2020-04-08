@@ -164,6 +164,7 @@ Func DownloadConfig()
 	  FileCopy ( @ScriptDir & "\ForceBindIP\BindIP64.dll", $sysWOW64)
 	  FileCopy ( @ScriptDir & "\ForceBindIP\ForceBindIP.exe", $sysWOW64)
 	  FileCopy ( @ScriptDir & "\ForceBindIP\ForceBindIP64.exe", $sysWOW64)
+	  MsgBox(0,"Done","Configuration done now u can use the app")
 
    Else ; System32
 	  ; Download
@@ -178,6 +179,7 @@ Func DownloadConfig()
 	  FileCopy ( @ScriptDir & "\ForceBindIP\BindIP64.dll", $system32)
 	  FileCopy ( @ScriptDir & "\ForceBindIP\ForceBindIP.exe", $system32)
 	  FileCopy ( @ScriptDir & "\ForceBindIP\ForceBindIP64.exe", $system32)
+	  MsgBox(0,"Done","Configuration done now u can use the app")
 
    EndIf
 EndFunc
