@@ -28,12 +28,13 @@ $Button_fireFox = GUICtrlCreateButton("Firefox", 192, 200, 91, 25)
 $Button_internetExplorer = GUICtrlCreateButton("Internet Explorer", 352, 200, 91, 25)
 $Button_spotify = GUICtrlCreateButton("Spotify", 496, 200, 91, 25)
 $Button_idm = GUICtrlCreateButton("IDM", 40, 240, 91, 25)
-$Button_steam = GUICtrlCreateButton("Steam", 192, 240, 91, 25)
-$Button_dota = GUICtrlCreateButton("Dota 2", 352, 240, 91, 25)
+$Button_steam = GUICtrlCreateButton("Steam", 352, 240, 91, 25)
+$Button_dota = GUICtrlCreateButton("Dota 2", 496, 240, 91, 25)
 $Button_downloadConfig = GUICtrlCreateButton("Download and Config ForceBindIP", 216, 288, 203, 25)
+$Button_fdm = GUICtrlCreateButton("FDM", 192, 240, 91, 25)
 GUICtrlCreateGroup("", -99, -99, 1, 1)
 $Label_copyRight = GUICtrlCreateLabel("M.Hasan Jabbari", 528, 336, 84, 17)
-$Label_Internet = GUICtrlCreateLabel("Select Internet Connection", 16, 344, 450, 17)
+$Label_Internet = GUICtrlCreateLabel("Select Internet Connection", 16, 344, 130, 17)
 GUISetState(@SW_SHOW)
 #EndRegion ### END Koda GUI section ###
 
@@ -53,6 +54,7 @@ $firefox = "C:\Program Files\Mozilla Firefox\firefox.exe"
 $iexplorer = "C:\Program Files\Internet Explorer\iexplore.exe"
 $spotify = "C:\Users\" & @UserName & "\AppData\Roaming\Spotify\Spotify.exe"
 $idm = "C:\Program Files (x86)\Internet Download Manager\IDMan.exe"
+$fdm = "C:\Program Files\Free Download Manager\fdm.exe"
 $steam = "C:\Program Files (x86)\Steam\steam.exe"
 $dota2 = "C:\Program Files (x86)\Steam\steamapps\common\dota 2 beta\game\bin\win64\dota2.exe"
 $system32 = "C:\windows\system32"
@@ -93,6 +95,9 @@ While 1
 
 	  Case $Button_idm
 		 runCMD($idm)
+
+	  Case $Button_fdm
+		 runCMD($fdm)
 
 	  Case $Button_steam
 		 runCMD($steam)
