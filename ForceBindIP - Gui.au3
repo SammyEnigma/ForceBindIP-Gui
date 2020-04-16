@@ -45,7 +45,7 @@ GUISetState(@SW_SHOW)
 
 
 ; Vars
-Global $cFilePath = "config.ini"
+Global $cFilePath = @TempDir "\ForceBindIP-config.ini"
 
 If FileExists($cFilePath) = False Then
 	createIniFile() ; Create config.ini
