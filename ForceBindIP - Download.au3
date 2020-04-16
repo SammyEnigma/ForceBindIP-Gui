@@ -8,12 +8,14 @@
 
 $system32 = "C:\Windows\System32"
 $sysWOW64 = "C:\windows\sysWOW64"
+$sZipFile = @ScriptDir & "\ForceBindIP.zip"
+$sDestFolder = @ScriptDir & "\ForceBindIP"
 
 DownloadConfig()
 
 
 Func DownloadConfig()
-   If FileExists ("C:\windows\system32\BindIP.dll") Or FileExists("C:\windows\sysWOW64\BindIP64.dll") Then
+   If FileExists ( "C:\Windows\System32\BindIP.dll" ) Or FileExists("C:\Windows\sysWOW64\BindIP64.dll") Then
 	  MsgBox(0,"File Exist","You Do Not Need To Use This Bottom " & @CRLF & @CRLF & "Everything Looks Great")
 
    ElseIf FileExists("C:\Windows\sysWOW64") Then; System64
@@ -21,28 +23,25 @@ Func DownloadConfig()
 	  InetGet ( "https://r1ch.net/assets/forcebindip/ForceBindIP-1.32.zip", "ForceBindIP.zip" )
 
 	  ; Unzip
-	  Const $sZipFile = @ScriptDir & "\ForceBindIP.zip"
-	  Const $sDestFolder = @ScriptDir & "\ForceBindIP"
 	  UnZip($sZipFile, $sDestFolder)
 	  If @error Then Exit MsgBox ($MB_SYSTEMMODAL,"","Error unzipping file : " & @error)
 
 	  ; Copy
-	  FileCopy ( @ScriptDir & "\ForceBindIP\BindIP.dll", $sysWOW64)
-	  FileCopy ( @ScriptDir & "\ForceBindIP\BindIP64.dll", $sysWOW64)
-	  FileCopy ( @ScriptDir & "\ForceBindIP\ForceBindIP.exe", $sysWOW64)
-	  FileCopy ( @ScriptDir & "\ForceBindIP\ForceBindIP64.exe", $sysWOW64)
 	  FileCopy ( @ScriptDir & "\ForceBindIP\BindIP.dll", $system32)
 	  FileCopy ( @ScriptDir & "\ForceBindIP\BindIP64.dll", $system32)
 	  FileCopy ( @ScriptDir & "\ForceBindIP\ForceBindIP.exe", $system32)
 	  FileCopy ( @ScriptDir & "\ForceBindIP\ForceBindIP64.exe", $system32)
+	  FileCopy ( @ScriptDir & "\ForceBindIP\BindIP.dll", $sysWOW64)
+	  FileCopy ( @ScriptDir & "\ForceBindIP\BindIP64.dll", $sysWOW64)
+	  FileCopy ( @ScriptDir & "\ForceBindIP\ForceBindIP.exe", $sysWOW64)
+	  FileCopy ( @ScriptDir & "\ForceBindIP\ForceBindIP64.exe", $sysWOW64)
+	  MsgBox(0,"Done","Configuration done now u can use the app")
 
    Else ; System32
 	  ; Download
 	  InetGet ( "https://r1ch.net/assets/forcebindip/ForceBindIP-1.32.zip", "ForceBindIP.zip" )
 
 	  ; Unzip
-	  Const $sZipFile = @ScriptDir & "\ForceBindIP.zip"
-	  Const $sDestFolder = @ScriptDir & "\ForceBindIP"
 	  UnZip($sZipFile, $sDestFolder)
 	  If @error Then Exit MsgBox ($MB_SYSTEMMODAL,"","Error unzipping file : " & @error)
 
@@ -51,6 +50,7 @@ Func DownloadConfig()
 	  FileCopy ( @ScriptDir & "\ForceBindIP\BindIP64.dll", $system32)
 	  FileCopy ( @ScriptDir & "\ForceBindIP\ForceBindIP.exe", $system32)
 	  FileCopy ( @ScriptDir & "\ForceBindIP\ForceBindIP64.exe", $system32)
+	  MsgBox(0,"Done","Configuration done now u can use the app")
 
    EndIf
 EndFunc

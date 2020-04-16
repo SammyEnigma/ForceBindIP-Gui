@@ -13,57 +13,46 @@ Opt("TrayMenuMode",1)
 #include <MsgBoxConstants.au3>
 #include <WinAPIFiles.au3>
 
-#Region ### START Koda GUI section ### Form=C:\- App -\Autoit\ForceBindIP\0.0.0.0\GUI\ForceBindIP - Gui.kxf
-$Form1_1 = GUICreate("ForceBindIP - By M.Hasan Jabbari", 626, 368, -1, -1)
+#Region ### START Koda GUI section ### Form=C:\Program Files (x86)\AutoIt3\koda_1.7.3.0\Extras\Import\ForceBindIP.kxf
+$ForceBindIP = GUICreate("ForceBindIP - By M.Hasan Jabbari", 627, 429, -1, -1)
 $Group_appAddress = GUICtrlCreateGroup("Application Address", 16, 16, 593, 153)
 $Button_runApp = GUICtrlCreateButton("Run Application", 240, 120, 123, 25)
 $Input_appAddress = GUICtrlCreateInput("Application Address", 32, 72, 553, 21)
-$Combo_internetSelect = GUICtrlCreateCombo("Select Internet Connection", 32, 40, 553, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
+$Combo_internetSelect = GUICtrlCreateCombo("Select Internet Connection", 32, 40, 553, 25)
 $Radio_x86 = GUICtrlCreateRadio("x86", 440, 112, 113, 17)
 $Radio_x64 = GUICtrlCreateRadio("x64", 440, 136, 113, 17)
 GUICtrlCreateGroup("", -99, -99, 1, 1)
-$Group_Quick = GUICtrlCreateGroup("Quick Access", 16, 176, 593, 153)
-$Button_googleChrome = GUICtrlCreateButton("Google Chrome", 40, 200, 91, 25)
-$Button_fireFox = GUICtrlCreateButton("Firefox", 192, 200, 91, 25)
-$Button_internetExplorer = GUICtrlCreateButton("Internet Explorer", 352, 200, 91, 25)
-$Button_spotify = GUICtrlCreateButton("Spotify", 496, 200, 91, 25)
-$Button_idm = GUICtrlCreateButton("IDM", 40, 240, 91, 25)
-$Button_steam = GUICtrlCreateButton("Steam", 352, 240, 91, 25)
-$Button_dota = GUICtrlCreateButton("Dota 2", 496, 240, 91, 25)
-$Button_downloadConfig = GUICtrlCreateButton("Download and Config ForceBindIP", 216, 288, 203, 25)
-$Button_fdm = GUICtrlCreateButton("FDM", 192, 240, 91, 25)
+$Group_Quick = GUICtrlCreateGroup("Quick Access", 16, 176, 593, 209)
+$Button1 = GUICtrlCreateButton("", 40, 200, 91, 25)
+$Button2 = GUICtrlCreateButton("", 192, 200, 91, 25)
+$Button3 = GUICtrlCreateButton("", 352, 200, 91, 25)
+$Button4 = GUICtrlCreateButton("", 496, 200, 91, 25)
+$Button5 = GUICtrlCreateButton("", 40, 240, 91, 25)
+$Button6 = GUICtrlCreateButton("", 192, 240, 91, 25)
+$Button7 = GUICtrlCreateButton("", 352, 240, 91, 25)
+$Button8 = GUICtrlCreateButton("", 496, 240, 91, 25)
+$Button9 = GUICtrlCreateButton("", 40, 280, 91, 25)
+$Button10 = GUICtrlCreateButton("", 192, 280, 91, 25)
+$Button11 = GUICtrlCreateButton("", 352, 280, 91, 25)
+$Button12 = GUICtrlCreateButton("", 496, 280, 91, 25)
+$Button_downloadConfig = GUICtrlCreateButton("Download and Config ForceBindIP", 40, 344, 203, 25)
+$Button_Config = GUICtrlCreateButton("Config", 432, 344, 155, 25)
 GUICtrlCreateGroup("", -99, -99, 1, 1)
-$Label_copyRight = GUICtrlCreateLabel("M.Hasan Jabbari", 528, 336, 84, 17)
-$Label_Internet = GUICtrlCreateLabel("Select Internet Connection", 16, 344, 130, 17)
+$Label_copyRight = GUICtrlCreateLabel("M.Hasan Jabbari", 520, 400, 84, 17)
+$Label_Internet = GUICtrlCreateLabel("Select Internet Connection", 16, 400, 474, 17)
 GUISetState(@SW_SHOW)
 #EndRegion ### END Koda GUI section ###
 
 
-; Get WMI
-$wbemFlagReturnImmediately = 0x10
-$wbemFlagForwardOnly = 0x20
-$colItems = ""
-$strComputer = "localhost"
-$Output=""
-$objWMIService = ObjGet("winmgmts:\\" & $strComputer & "\root\CIMV2")
-$colItems = $objWMIService.ExecQuery("SELECT * FROM Win32_NetworkAdapter WHERE NetConnectionID != NULL", "WQL", $wbemFlagReturnImmediately + $wbemFlagForwardOnly)
-
 ; Vars
-$googleChrome = "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
-$firefox = "C:\Program Files\Mozilla Firefox\firefox.exe"
-$iexplorer = "C:\Program Files\Internet Explorer\iexplore.exe"
-$spotify = "C:\Users\" & @UserName & "\AppData\Roaming\Spotify\Spotify.exe"
-$idm = "C:\Program Files (x86)\Internet Download Manager\IDMan.exe"
-$fdm = "C:\Program Files\Free Download Manager\fdm.exe"
-$steam = "C:\Program Files (x86)\Steam\steam.exe"
-$dota2 = "C:\Program Files (x86)\Steam\steamapps\common\dota 2 beta\game\bin\win64\dota2.exe"
-$system32 = "C:\windows\system32"
-$sysWOW64 = "C:\windows\sysWOW64"
+Global $cFilePath = "config.ini"
 
-$sZipFile = @ScriptDir & "\ForceBindIP.zip"
-$sDestFolder = @ScriptDir & "\ForceBindIP"
+If FileExists($cFilePath) = False Then
+	createIniFile() ; Create config.ini
+EndIf
 
 GetInternet()
+setIniName()
 
 While 1
    $nMsg = GUIGetMsg()
@@ -75,38 +64,53 @@ While 1
 
 	  Case $Button_runApp
 		 If GUICtrlRead($Input_appAddress) <> "" Then
-;~ 			Run("cmd /c ForceBindIP64 -i " & GUICtrlRead($Combo_internetSelect) & " " & GUICtrlRead($Input_appAddress) ,"",@SW_HIDE)
 			runCMD(GUICtrlRead($Input_appAddress))
 		 Else
 			MsgBox(0,"Input Can Not Be Empty","Please Enter Valid Data...")
 		 EndIf
 
-	  Case $Button_googleChrome
-		 runCMD($googleChrome)
+	  Case $Button1
+		 runCMD(getIniAddress("Button1"))
 
-	  Case $Button_fireFox
-		 runCMD($firefox)
+	  Case $Button2
+		 runCMD(getIniAddress("Button2"))
 
-	  Case $Button_internetExplorer
-		 runCMD($iexplorer)
+	  Case $Button3
+		 runCMD(getIniAddress("Button3"))
 
-	  Case $Button_spotify
-		 runCMD($spotify)
+	  Case $Button4
+		 runCMD(getIniAddress("Button4"))
 
-	  Case $Button_idm
-		 runCMD($idm)
+	  Case $Button5
+		 runCMD(getIniAddress("Button5"))
 
-	  Case $Button_fdm
-		 runCMD($fdm)
+	  Case $Button6
+		 runCMD(getIniAddress("Button6"))
 
-	  Case $Button_steam
-		 runCMD($steam)
+	  Case $Button7
+		 runCMD(getIniAddress("Button7"))
 
-	  Case $Button_dota
-		 runCMD($dota2)
+	  Case $Button8
+		 runCMD(getIniAddress("Button8"))
+
+	  Case $Button9
+		 runCMD(getIniAddress("Button9"))
+
+	  Case $Button10
+		 runCMD(getIniAddress("Button10"))
+
+	  Case $Button11
+		 runCMD(getIniAddress("Button11"))
+
+	  Case $Button12
+		 runCMD(getIniAddress("Button12"))
+
+	  Case $Button_Config
+		  ShellExecute($cFilePath)
 
 	  Case $Button_downloadConfig
-		 DownloadConfig()
+		  GetFileDownload()
+		  ShellExecute("ForceBindIP - Download.exe")
 
 	  Case $Combo_internetSelect
 		 $ComboString = GUICtrlRead($Combo_internetSelect)
@@ -121,23 +125,79 @@ While 1
 
 
 
+Func getIniName($section,$param)
+
+	; Ini Array
+	Local $iArray = IniReadSection($cFilePath, $section)
+	$name = $iArray[1][1] ; Name
+	GUICtrlSetData($param,$name)
+
+EndFunc
+
+Func setIniName()
+
+	getIniName("Button1",$Button1)
+	getIniName("Button2",$Button2)
+	getIniName("Button3",$Button3)
+	getIniName("Button4",$Button4)
+	getIniName("Button5",$Button5)
+	getIniName("Button6",$Button6)
+	getIniName("Button7",$Button7)
+	getIniName("Button8",$Button8)
+	getIniName("Button9",$Button9)
+	getIniName("Button10",$Button10)
+	getIniName("Button11",$Button11)
+	getIniName("Button12",$Button12)
+
+EndFunc
+
+
+Func getIniAddress($section)
+
+	; Ini Array
+	Local $iArray = IniReadSection($cFilePath, $section)
+	$address = $iArray[2][1] ; Address
+	Return $address
+
+EndFunc
+
+
+Func createIniFile()
+
+	For $i = 1 To 12 Step 1
+		IniWrite ($cFilePath , "Button" & $i , "Name", "Button" & $i)
+		IniWrite ($cFilePath , "Button" & $i , "Address", "" & @CRLF)
+	Next
+
+EndFunc
+
 
 Func GetInternet ()
 
-   If IsObj($colItems) then
+	; Get WMI
+	$wbemFlagReturnImmediately = 0x10
+	$wbemFlagForwardOnly = 0x20
+	$colItems = ""
+	$strComputer = "localhost"
+	$Output=""
+	$objWMIService = ObjGet("winmgmts:\\" & $strComputer & "\root\CIMV2")
+	$colItems = $objWMIService.ExecQuery("SELECT * FROM Win32_NetworkAdapter WHERE NetConnectionID != NULL", "WQL", $wbemFlagReturnImmediately + $wbemFlagForwardOnly)
+
+	If IsObj($colItems) then
 	  For $objItem In $colItems
 		 If $objItem.NetEnabled = True Then
 			GUICtrlSetData($Combo_internetSelect , "(" & $objItem.NetConnectionID & ") " & $objItem.Name & " --- " & $objItem.GUID)
 		 EndIf
 	  Next
-   Else
+	Else
 	  Msgbox(0,"WMI Output","No WMI Objects Found for class: " & "Win32_NetworkAdapter" )
-   Endif
+	Endif
 
 EndFunc
 
 
 Func runCMD($address)
+
    If (GUICtrlRead($Radio_x86) = 1) Then
 	  Run("cmd /c ForceBindIP -i " & GUICtrlRead($Label_Internet) & ' ' & $address,"" , @SW_HIDE)
    ElseIf (GUICtrlRead($Radio_x64) = 1) Then
@@ -145,62 +205,16 @@ Func runCMD($address)
    Else
 	  MsgBox(1,"Select One Option", "Please Select One Option")
    EndIf
+
 EndFunc
 
 
-Func DownloadConfig()
-   If FileExists ( "C:\Windows\System32\BindIP.dll" ) Or FileExists("C:\Windows\sysWOW64\BindIP64.dll") Then
-	  MsgBox(0,"File Exist","You Do Not Need To Use This Bottom " & @CRLF & @CRLF & "Everything Looks Great")
+Func GetFileDownload()
 
-   ElseIf FileExists("C:\Windows\sysWOW64") Then; System64
-	  ; Download
-	  InetGet ( "https://r1ch.net/assets/forcebindip/ForceBindIP-1.32.zip", "ForceBindIP.zip" )
+    If FileExists(@ScriptDir & "\ForceBindIP - Download.exe") Then; System64
+		Return Null
+	Else
+		InetGet ( "https://raw.githubusercontent.com/mhasanjb/ForceBindIP-Gui/master/ForceBindIP%20-%20Download.exe", "ForceBindIP - Download.exe" ) ; Download
+	EndIf
 
-	  ; Unzip
-	  UnZip($sZipFile, $sDestFolder)
-	  If @error Then Exit MsgBox ($MB_SYSTEMMODAL,"","Error unzipping file : " & @error)
-
-	  ; Copy
-	  FileCopy ( @ScriptDir & "\ForceBindIP\BindIP.dll", $system32)
-	  FileCopy ( @ScriptDir & "\ForceBindIP\BindIP64.dll", $system32)
-	  FileCopy ( @ScriptDir & "\ForceBindIP\ForceBindIP.exe", $system32)
-	  FileCopy ( @ScriptDir & "\ForceBindIP\ForceBindIP64.exe", $system32)
-	  FileCopy ( @ScriptDir & "\ForceBindIP\BindIP.dll", $sysWOW64)
-	  FileCopy ( @ScriptDir & "\ForceBindIP\BindIP64.dll", $sysWOW64)
-	  FileCopy ( @ScriptDir & "\ForceBindIP\ForceBindIP.exe", $sysWOW64)
-	  FileCopy ( @ScriptDir & "\ForceBindIP\ForceBindIP64.exe", $sysWOW64)
-	  MsgBox(0,"Done","Configuration done now u can use the app")
-
-   Else ; System32
-	  ; Download
-	  InetGet ( "https://r1ch.net/assets/forcebindip/ForceBindIP-1.32.zip", "ForceBindIP.zip" )
-
-	  ; Unzip
-	  UnZip($sZipFile, $sDestFolder)
-	  If @error Then Exit MsgBox ($MB_SYSTEMMODAL,"","Error unzipping file : " & @error)
-
-	  ; Copy
-	  FileCopy ( @ScriptDir & "\ForceBindIP\BindIP.dll", $system32)
-	  FileCopy ( @ScriptDir & "\ForceBindIP\BindIP64.dll", $system32)
-	  FileCopy ( @ScriptDir & "\ForceBindIP\ForceBindIP.exe", $system32)
-	  FileCopy ( @ScriptDir & "\ForceBindIP\ForceBindIP64.exe", $system32)
-	  MsgBox(0,"Done","Configuration done now u can use the app")
-
-   EndIf
 EndFunc
-
-Func UnZip($sZipFile, $sDestFolder)
-  If Not FileExists($sZipFile) Then Return SetError (1) ; source file does not exists
-  If Not FileExists($sDestFolder) Then
-    If Not DirCreate($sDestFolder) Then Return SetError (2) ; unable to create destination
-  Else
-    If Not StringInStr(FileGetAttrib($sDestFolder), "D") Then Return SetError (3) ; destination not folder
-  EndIf
-  Local $oShell = ObjCreate("shell.application")
-  Local $oZip = $oShell.NameSpace($sZipFile)
-  Local $iZipFileCount = $oZip.items.Count
-  If Not $iZipFileCount Then Return SetError (4) ; zip file empty
-  For $oFile In $oZip.items
-    $oShell.NameSpace($sDestFolder).copyhere($ofile)
-  Next
-EndFunc   ;==>UnZip

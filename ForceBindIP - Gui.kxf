@@ -4,7 +4,7 @@
 		<property name="Left" vt="Int16">604</property>
 		<property name="Top" vt="Int16">237</property>
 		<property name="Width" vt="Int16">641</property>
-		<property name="Height" vt="Int16">406</property>
+		<property name="Height" vt="Int16">499</property>
 		<property name="Caption" vt="String">ForceBindIP - By M.Hasan Jabbari</property>
 		<property name="Color" vt="Ident">clBtnFace</property>
 		<property name="Font.Charset" vt="Ident">DEFAULT_CHARSET</property>
@@ -126,7 +126,7 @@
 				<property name="Left" vt="Int8">16</property>
 				<property name="Top" vt="Int16">176</property>
 				<property name="Width" vt="Int16">593</property>
-				<property name="Height" vt="Int16">153</property>
+				<property name="Height" vt="Int16">233</property>
 				<property name="CtrlStyle" vt="Int32">1342308359</property>
 				<property name="CtrlExStyle" vt="Int8">0</property>
 				<property name="Caption" vt="String">Quick Access</property>
@@ -226,8 +226,8 @@
 				</object>
 				<object type="TAButton" name="Button_dota">
 					<properties>
-						<property name="Left" vt="Int16">480</property>
-						<property name="Top" vt="Int8">64</property>
+						<property name="Left" vt="Int8">24</property>
+						<property name="Top" vt="Int8">104</property>
 						<property name="Width" vt="Int8">91</property>
 						<property name="Height" vt="Int8">25</property>
 						<property name="Caption" vt="String">Dota 2</property>
@@ -242,7 +242,7 @@
 				<object type="TAButton" name="Button_downloadConfig">
 					<properties>
 						<property name="Left" vt="Int16">200</property>
-						<property name="Top" vt="Int8">112</property>
+						<property name="Top" vt="Int16">192</property>
 						<property name="Width" vt="Int16">203</property>
 						<property name="Height" vt="Int8">25</property>
 						<property name="Caption" vt="String">Download and Config ForceBindIP</property>
@@ -269,12 +269,27 @@
 					</properties>
 					<components/>
 				</object>
+				<object type="TAButton" name="Button_webspotify">
+					<properties>
+						<property name="Left" vt="Int16">480</property>
+						<property name="Top" vt="Int8">64</property>
+						<property name="Width" vt="Int8">91</property>
+						<property name="Height" vt="Int8">25</property>
+						<property name="Caption" vt="String">Web Spotify</property>
+						<property name="TabOrder" vt="Int8">9</property>
+						<property name="Color" vt="Ident">clBtnFace</property>
+						<property name="CtrlStyle" vt="Int32">1342373888</property>
+						<property name="CtrlExStyle" vt="Int8">0</property>
+						<property name="Resizing" vt="Set">DockWidth, DockHeight</property>
+					</properties>
+					<components/>
+				</object>
 			</components>
 		</object>
 		<object type="TALabel" name="Label_copyRight">
 			<properties>
-				<property name="Left" vt="Int16">528</property>
-				<property name="Top" vt="Int16">336</property>
+				<property name="Left" vt="Int16">520</property>
+				<property name="Top" vt="Int16">424</property>
 				<property name="Width" vt="Int8">84</property>
 				<property name="Height" vt="Int8">17</property>
 				<property name="Caption" vt="String">M.Hasan Jabbari</property>
@@ -289,8 +304,8 @@
 		<object type="TALabel" name="Label_Internet">
 			<properties>
 				<property name="Left" vt="Int8">16</property>
-				<property name="Top" vt="Int16">344</property>
-				<property name="Width" vt="Int16">130</property>
+				<property name="Top" vt="Int16">432</property>
+				<property name="Width" vt="Int16">474</property>
 				<property name="Height" vt="Int8">17</property>
 				<property name="Caption" vt="String">Select Internet Connection</property>
 				<property name="TabOrder" vt="Int8">3</property>
