@@ -1,7 +1,7 @@
 # ForceBindIP-Gui
 A GUI For ForceBindIP
 
-A Simple Application Written With AutoIt Programming language   
+A Simple Application Written In AutoIt Programming language   
 ![alt text](https://github.com/mhasanjb/ForceBindIP-Gui/blob/master/Preview5.png  "(Preview)ForceBindIP - By M.Hasan Jabbari")
 
 ## Automatic 
